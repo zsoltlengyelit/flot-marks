@@ -54,6 +54,7 @@ See samples.html & source below. Feel free to extend the marks.
                 toothSize: 9,
                 color: "rgba(128, 128, 128, 1.0)",
                 fill: true,
+                showTriangle: false,
                 fillColor: "rgba(64, 128, 192, 0.6)",
                 showLabels: true,
                 rowHeight: 20,
@@ -161,7 +162,9 @@ See samples.html & source below. Feel free to extend the marks.
         for (var i = 0; i < series.markdata.length; i++)
             if ((series.markdata[i].position >= axes.xaxis.min) && (series.markdata[i].position <= axes.xaxis.max)) {
               var x = axes.xaxis.p2c(series.markdata[i].position);
-              drawSingleMark(ctx, x, ytop, ybot, w2, h2, series, series.markdata[i]);
+              if(series.marks.showTriangle){
+                drawSingleMark(ctx, x, ytop, ybot, w2, h2, series, series.markdata[i]);
+              }
             }
 
         ctx.restore();
